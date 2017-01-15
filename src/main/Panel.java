@@ -26,9 +26,6 @@ import file.FileOperations;
 
 public class Panel extends Panel_Ab implements DropTargetListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	File source,destination;
@@ -42,7 +39,6 @@ public class Panel extends Panel_Ab implements DropTargetListener {
 
 	@Override
 	public void display() {
-		// TODO Auto-generated method stub
 		JFrame f = new JFrame("Convert ANSI To UTF-8");
 
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,29 +64,6 @@ public class Panel extends Panel_Ab implements DropTargetListener {
 		final JButton save = new JButton("Save");
 		final JButton convert=new JButton("Convert");
 		
-		// text.setEditable(false);
-		// TransferHandler th=this.getTransferHandler();
-		// DropTarget dt = new DropTarget(this, new DropTargetAdapter() {
-		//
-		// @Override
-		// public void drop(DropTargetDropEvent dtde) {
-		// // TODO Auto-generated method stub
-		// try {
-		//
-		// source= (File)
-		// dtde.getTransferable().getTransferData(DataFlavor.javaFileListFlavor);
-		//
-		// text.setText(source.getName());
-		// System.out.println(source.getName());
-		// } catch (UnsupportedFlavorException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// } catch (IOException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// }
-		// });
 		select.addActionListener(new ActionListener() {
 
 			@Override
@@ -160,13 +133,12 @@ public class Panel extends Panel_Ab implements DropTargetListener {
 			DataFlavor[] flavors = tr.getTransferDataFlavors();
 			for (int i = 0; i < flavors.length; i++) {
 				System.out.println("Possible flavor: " + flavors[i].getMimeType());
-				// Check for file lists specifically
+				
 				if (flavors[i].isFlavorJavaFileListType()) {
-					// Great! Accept copy drops...
+					
 					dtde.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
 					textInput.setText("Successful file list drop.\n\n");
 
-					// And add the list of file names to our text area
 					@SuppressWarnings("unchecked")
 					List<File> list =   (List<File>) tr.getTransferData(flavors[i]);
 					for (int j = 0; j < list.size(); j++) {
@@ -174,24 +146,22 @@ public class Panel extends Panel_Ab implements DropTargetListener {
 						source = (File) list.get(0);
 						textOutput.setText(list.get(0).toString());
 						destination = source;
-						// System.out.println(list.get(j));
-						// text.append(list.get(j) + "\n");
+						
 					}
 
-					// If we made it this far, everything worked.
+					
 					dtde.dropComplete(true);
 					return;
 				}
-				// Ok, is it another Java object?
+				
 				else if (flavors[i].isFlavorSerializedObjectType()) {
 					dtde.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
 					textInput.setText("Successful text drop.\n\n");
-					// Object o = tr.getTransferData(flavors[i]);
-					// text.append("Object: " + o);
+					
 					dtde.dropComplete(true);
 					return;
 				}
-				// How about an input stream?
+				
 				else if (flavors[i].isRepresentationClassInputStream()) {
 					dtde.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
 					textInput.setText("Successful text drop.\n\n");
@@ -201,7 +171,7 @@ public class Panel extends Panel_Ab implements DropTargetListener {
 					return;
 				}
 			}
-			// Hmm, the user must not have dropped a file list
+			
 			System.out.println("Drop failed: " + dtde);
 			dtde.rejectDrop();
 		} catch (Exception e) {
@@ -212,25 +182,25 @@ public class Panel extends Panel_Ab implements DropTargetListener {
 
 	@Override
 	public void dragEnter(DropTargetDragEvent dtde) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	@Override
 	public void dragExit(DropTargetEvent dte) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	@Override
 	public void dragOver(DropTargetDragEvent dtde) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	@Override
 	public void dropActionChanged(DropTargetDragEvent dtde) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
