@@ -18,4 +18,4 @@ Select or drag and drop the file and just click the convert button.
 
 ![alt tag](2.jpg)
 
-This is [runnable jar](ConvertToUTF.jar) file. 
+This is [the runnable jar](ConvertToUTF.jar) file. 
