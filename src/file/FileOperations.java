@@ -70,7 +70,7 @@ public class FileOperations implements File_IO{
 			ArrayList<String> lines=new ArrayList<String>();
 			boolean UTF=true;
 			while(buffer!=null&&UTF){
-				if(buffer.contains("Ÿ")||buffer.contains("Ã"))
+				if(buffer.contains("Å¸")||buffer.contains("Ãƒ"))
 					UTF=false;
 				lines.add(changeCharacters(buffer));
 				buffer=reader.readLine();
